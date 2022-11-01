@@ -52,7 +52,7 @@ contract("Voting", accounts => {
         await this.instance.startProposalsRegistering({from:owner});
         await expectRevert(this.instance.startProposalsRegistering({from:owner}), "Registering proposals cant start now");
     });
-    it('check change workflowStatus into ProposalsRegistrationStarted', async function(){           //check si le workflow status ne change pas d'etat
+    it('check change workflowStatus into ProposalsRegistrationStarted', async function(){           //check si le workflow status change d'etat
         await this.instance.startProposalsRegistering({from:owner});
         const status = await this.instance.workflowStatus.call();
         expect(new BN(status)).to.be.bignumber.equal(new BN(1));
